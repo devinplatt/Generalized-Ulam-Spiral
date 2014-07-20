@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Python code for generating an Ulam Spiral. Uses generic input to determine
-primality of a given number.
+A Demo of the Ulam Sprial generating modules.
 
-Will add:
-	other spirals
+Example usage:
+	python main.py --length=500 --output_file=spiral.bmp
+	
+	For a spiral on the odd numbers just add "--odds" to the previous command.
+	
+The additional "--custom1" and "--custom2" commands demonstrate how to create
+spirals from arbitrary sets of primes.
 """
 
 import ulam
@@ -63,16 +67,17 @@ def main():
 						help='If True, prints a spiral for the odd numbers')
 	parser.set_defaults(odds=False)
 	parser.add_argument('--custom1', dest='custom1', action='store_true',
-						help='If True, prints a spiral for ...')
+						help='If True, prints a spiral for a sequence of primes'
+							 ' (see source)')
 	parser.set_defaults(custom1=False)
 	parser.add_argument('--custom2', dest='custom2', action='store_true',
 						help='If True, prints a spiral for the set of primes'
-							 'with 2 removed and 1.5 added')
+							 ' with 2 removed and 1.5 added')
 	parser.set_defaults(custom2=False)
 	args = parser.parse_args()
-	
+
 	print("Starting...")
-	
+
 	if args.odds:
 		DemoSievedPrimes(args.length, args.output_file)
 	elif args.custom1:
@@ -81,7 +86,7 @@ def main():
 		DemoCustom2(args.output_file)
 	else:
 		DemoNormalPrimes(args.length, args.output_file)
-	
+
 	print("Done!")
 	
 
