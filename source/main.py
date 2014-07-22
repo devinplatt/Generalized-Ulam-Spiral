@@ -44,7 +44,7 @@ def DemoCustom1(output_file):
 # Demo of the generator on any Beurling generalized integers
 # This is VERY slow for large n
 def DemoCustom2(output_file):
-	primes = ulam.PrimesBelowNSquared(80)
+	primes = ulam.PrimesBelowNSquared(200)
 	primes.remove(2)
 	generate_integers.AddToSortedList(1.5, primes)
 	ig = generate_integers.IntegersGenerator(primes)
